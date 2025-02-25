@@ -117,7 +117,7 @@ Select Winner,
 COUNT (*)
 FROM superbowls
 GROUP BY winner
-Order by count(*)desc;
+Order by count(*) desc;
 
 --Grouping data values that doesn't exist (CASE). 
 --This Case statement shows teams that are a dynasty, strong contender, champion, and now superbowl wins.
@@ -125,14 +125,14 @@ Order by count(*)desc;
 Select Winner AS Team,
 COUNT (*) AS Superbowl_rings,
 CASE 
-WHEN count(*) >= 6 THEN 'dynasty'
-WHEN count(*) BETWEEN 3 AND 5 THEN 'Strong Contender'
-WHEN count(*) BETWEEN 1 AND 2 THEN 'Champion'
+WHEN Superbowl_rings >= 6 THEN 'dynasty'
+WHEN Superbowl_rings BETWEEN 3 AND 5 THEN 'Strong Contender'
+WHEN Superbowl_rings BETWEEN 1 AND 2 THEN 'Champion'
 ELSE 'No SuperBowl Wins'
 END AS Team_Superbowl_History
 FROM superbowls
 GROUP BY winner
-Order by count(*)desc;
+Order by Superbowl_rings desc;
 
 --These are SuperBowls that were either played in California or Louisiana.
 
@@ -143,5 +143,5 @@ SELECT
     ,state
     ,date
 FROM superbowls
-WHERE state IN( 'California','Louisiana');
+WHERE state IN('California','Louisiana');
 
